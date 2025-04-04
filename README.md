@@ -82,19 +82,46 @@ source venv/bin/activate  # Linux/macOS
 venv\Scripts\activate     # Windows
 ```
 
-3. **Certifique-se de que o arquivo `teste.dat` está na raiz do projeto.**
+3. **Instale as dependências:**
 
-4. **Execute o analisador:**
+Certifique-se de que o arquivo `requirements.txt` possui o seguinte conteúdo:
+
+```
+notebook
+```
+
+E instale com:
 
 ```bash
-python3 analise_grafo.py
+pip install -r requirements.txt
+```
+
+4. **Certifique-se de que o arquivo `.dat` que deseja analisar está na pasta `dados/`.**
+
+5. **Execute o notebook principal via terminal:**
+
+```bash
+jupyter notebook main.ipynb
 ```
 
 ---
 
+### 📌 Observação importante
+
+O arquivo `main.ipynb` é o **arquivo principal** para executar o projeto.  
+Ele:
+
+- Carrega os dados do grafo;
+- Executa os cálculos;
+- Exibe as estatísticas;
+- Mostra a visualização gráfica da estrutura.
+
+O arquivo `analise_grafo.py` é **um módulo auxiliar**, responsável apenas pelo cálculo das estatísticas.  
+Ele **não deve ser executado diretamente**, apenas importado pelo notebook.
+
 ## 🗂️ Formato do Arquivo `.dat`
 
-O arquivo `.dat` segue uma estrutura textual, contendo:
+O arquivo `.dat` deve seguir uma estrutura textual, contendo:
 
 - **EDGE**: arestas (ligações bidirecionais)
 - **ARC**: arcos (ligações com direção)
@@ -128,11 +155,20 @@ O script usa expressões regulares para encontrar e extrair esses dados automati
 
 ## 🧠 Tecnologias e Algoritmos Usados
 
-- Linguagem: **Python 3**
-- Leitura com: `re` (expressões regulares)
-- Matrizes de caminhos mínimos: **Floyd-Warshall**
-- Cálculo de intermediação: baseado em contagem de caminhos mínimos
-- Cálculo de densidade e graus: diretamente com base na estrutura
+- **Linguagem**: Python 3
+- **Bibliotecas**:
+  - `matplotlib`: visualização do grafo.
+  - `random`: geração de posições aleatórias para visualização.
+  - `re`: leitura e extração de dados usando expressões regulares.
+  - `itertools`: combinações para cálculo de centralidade.
+  - `numpy`: estrutura de apoio
+- **Algoritmos e Cálculos**:
+  - **Floyd-Warshall**: cálculo da matriz de caminhos mínimos e predecessores.
+  - **Centralidade de Intermediação**: com base em contagem dos caminhos mínimos entre pares de nós.
+  - **Densidade do Grafo**: calculada com base no número de arestas/arcos e vértices.
+  - **Grau mínimo e máximo**: contagem das conexões por nó.
+  - **Caminho Médio**: média das distâncias mínimas entre pares de nós.
+  - **Diâmetro do Grafo**: maior distância mínima entre quaisquer dois nós.
 
 ---
 
@@ -161,13 +197,14 @@ Estatísticas do Grafo:
 
 ## ✏️ Personalização
 
-Você pode trocar o arquivo analisado modificando a linha final do `analise_grafo.py`:
+Você pode trocar o arquivo analisado modificando a sexta linha do `main.ipynb`:
 
 ```python
-caminho_arquivo = "teste.dat"
+caminho_arquivo = "dados/teste.dat"
 ```
 
-Substitua `"teste.dat"` pelo nome de outro arquivo no mesmo formato.
+Substitua `"teste.dat"` pelo nome de outro arquivo no mesmo formato. 
+OBS: Você deve ter esse arquivo dentro da pasta dados.
 
 ---
 
