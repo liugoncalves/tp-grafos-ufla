@@ -44,7 +44,7 @@ Este projeto foi desenvolvido como parte da disciplina de **Grafos** do curso de
 
 ## 💡 Qual problema o projeto resolve?
 
-Este analisador foi pensado para lidar com instâncias de problemas reais de otimização de rotas, como o **Rural Postman Problem (RPP)**. Nesse tipo de problema, é necessário percorrer certas ruas obrigatórias com o menor custo possível — algo bastante comum em tarefas como:
+Este analisador foi pensado para lidar com instâncias de problemas reais de otimização de rotas. Nesse tipo de problema, é necessário percorrer certas ruas obrigatórias com o menor custo possível, algo bastante comum em tarefas como:
 
 - Coleta de lixo;
 - Entrega de correspondências;
@@ -204,7 +204,7 @@ caminho_arquivo = "dados/teste.dat"
 ```
 
 Substitua `"teste.dat"` pelo nome de outro arquivo no mesmo formato. 
-OBS: Você deve ter esse arquivo dentro da pasta dados.
+OBS: Você deve ter esse arquivo dentro da pasta dados e ele deve seguir a estrutura textual citada acima no tópico *Formato do Arquivo*.
 
 ---
 
