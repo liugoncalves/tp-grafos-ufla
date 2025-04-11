@@ -88,6 +88,9 @@ Certifique-se de que o arquivo `requirements.txt` possui o seguinte conteúdo:
 
 ```
 notebook
+matplotlib
+numpy
+
 ```
 
 E instale com:
