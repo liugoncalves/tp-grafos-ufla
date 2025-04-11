@@ -75,9 +75,9 @@ def ler_arquivo_dados(caminho_arquivo):
 
         # se estamos lendo nos, extrai os dados dos nos
         if lendo_nos:
-            partes = linha.split()
-            if len(partes) == 3:
-                id_no = int(partes[0][1:])
+            partes = linha.split() # divide a linha do arquivo em partes
+            if len(partes) == 3: # se a linha tiver 3 partes (ReN.	DEMAND	S. COST)
+                id_no = int(partes[0][1:]) # remove o N do identificador e pega so o numero
                 demanda = int(partes[1])
                 custo_servico = int(partes[2])
                 nos[id_no] = {'demanda': demanda, 'custo_servico': custo_servico}
@@ -86,9 +86,9 @@ def ler_arquivo_dados(caminho_arquivo):
         elif lendo_arestas_obrigatorias:
             partes = linha.split()
             if len(partes) == 6:
-                de_no = int(partes[1])
-                para_no = int(partes[2])
-                custo_viagem = int(partes[3])
+                de_no = int(partes[1]) # no de origem
+                para_no = int(partes[2]) # no de destino
+                custo_viagem = int(partes[3]) 
                 demanda = int(partes[4])
                 custo_servico = int(partes[5])
                 arestas_obrigatorias.append((de_no, para_no, custo_viagem, demanda, custo_servico))
@@ -139,7 +139,7 @@ def floyd_warshall(grafo, total_nos):
     distancias = [[INF] * total_nos for _ in range(total_nos)]  # cria matriz de distancias inicializada com infinito
     proximo_no = [[-1] * total_nos for _ in range(total_nos)]  # cria matriz para armazenar o proximo no no caminho mais curto
 
-    # inicializa a distancia de cada no para ele mesmo como zero
+    # inicializa a distancia de cada no para ele mesmo como zero (a diagonal)
     for i in range(total_nos):
         distancias[i][i] = 0
 
@@ -165,6 +165,8 @@ def floyd_warshall(grafo, total_nos):
 def calcular_intermediacao(dados_grafo, total_nos):
     distancias, proximo_no = floyd_warshall(dados_grafo, total_nos)  # calcula caminhos minimos
     intermediacao = {i: 0 for i in range(1, total_nos + 1)}  # inicializa dicionario de intermediacao
+    # cada chave eh um no (1 ate total_nos)
+    # cada valor comeca com 0 e representa quantas vezes esse no aparece como intermediario
 
     # percorre todos os pares de nos para verificar quais passam por outros nos
     for u, v in itertools.combinations(range(total_nos), 2):
