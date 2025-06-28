@@ -1,5 +1,4 @@
-import sys
-from src import grafo
+from src.grafo import GrafoCARP
 
 def path_scanning(grafo):
     grafo.calcular_floyd_warshall()
@@ -52,7 +51,7 @@ def path_scanning(grafo):
         carga = 0
         custo = 0
         servicos_rota = []
-        detalhes_visitas = [{"servico": {"tipo": "D"}}]  # Depósito inicial
+        detalhes_visitas = [{"servico": {"tipo": "D"}}]
         no_atual = deposito
         
         while True:
@@ -123,7 +122,7 @@ def path_scanning(grafo):
                 custo += dist_volta
                 rota.extend(caminho_volta[1:])
         
-        detalhes_visitas.append({"servico": {"tipo": "D"}})  # Depósito final
+        detalhes_visitas.append({"servico": {"tipo": "D"}})
         
         solucao.append({
             "rota": rota,
@@ -158,33 +157,3 @@ def criar_id_servicos(grafo):
         proximo_id += 1
 
     return identificadores
-
-def salvar_resultado_arquivo(solucao, tempo_total_ns, tempo_solucao_ns, nome_arquivo_saida):
-    with open(nome_arquivo_saida, "w", encoding="utf-8") as arquivo:
-        custo_soma = sum(rota["custo"] for rota in solucao)
-        num_rotas = len(solucao)
-
-        arquivo.write(f"{custo_soma}\n")
-        arquivo.write(f"{num_rotas}\n")
-        arquivo.write(f"{tempo_total_ns}\n")
-        arquivo.write(f"{tempo_solucao_ns}\n")
-
-        for i, rota in enumerate(solucao, start=1):
-            demanda_rota = rota["demanda"]
-            custo_rota = rota["custo"]
-            visitas = rota["detalhes"]
-            total_visitas = len(visitas)
-
-            linha = f"0 1 {i} {demanda_rota} {custo_rota} {total_visitas}"
-            for visita in visitas:
-                serv = visita["servico"]
-                tipo = serv["tipo"]
-
-                if tipo == "D" or tipo == "Deposito":
-                    linha += " (D 0,1,1)"
-                else:
-                    id_s = serv["id"]
-                    origem = serv["origem"]
-                    destino = serv["destino"]
-                    linha += f" (S {id_s},{origem},{destino})"
-            arquivo.write(linha + "\n")

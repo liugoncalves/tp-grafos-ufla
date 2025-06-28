@@ -22,6 +22,12 @@ class GrafoCARP:
 
         self.info = {}
         self._carregar_dados()
+        self.demanda_arestas_obrigatorias = {}
+        for (u, v, _, demanda) in self.arestas_obrigatorias:
+            self.demanda_arestas_obrigatorias[(u, v)] = demanda
+            self.demanda_arestas_obrigatorias[(v, u)] = demanda  # simetria para arestas
+
+        self.demanda_arcos_obrigatorios = { (u, v): demanda for (u, v, _, demanda) in self.arcos_obrigatorios }
         self._inicializar_matriz_adj()
 
     def _carregar_dados(self):
@@ -225,3 +231,17 @@ class GrafoCARP:
             'arcos_nao_obrigatorios': self.arcos_nao_obrigatorios,
             'nos': nos_dict
         }
+    
+    def get_demanda_no(self, no):
+        for item in self.nos_obrigatorios:
+            if item['no'] == no:
+                return item['demanda']
+        return 0
+
+    def get_demanda_aresta(self, u, v):
+        return self.demanda_arestas_obrigatorias.get((u, v), 0)
+
+    def get_demanda_arco(self, u, v):
+        return self.demanda_arcos_obrigatorios.get((u, v), 0)
+
+

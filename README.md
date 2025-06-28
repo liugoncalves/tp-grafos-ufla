@@ -258,18 +258,47 @@
 
   ---
 
+  ## 🛠️ Atualizações e Melhorias
+
+  Além dos requisitos básicos do trabalho, este projeto foi **ampliado com melhorias práticas e funcionais**, que tornaram a solução mais eficiente e visualmente compreensível. Entre as principais atualizações, destacam-se:
+
+  - ✅ **Criação de um otimizador próprio** para refinar as soluções iniciais geradas pelo algoritmo Path Scanning, baseado em realocação inteligente de serviços entre rotas.
+  - 📉 **Comparação automatizada do custo total** antes e depois da aplicação do otimizador, destacando apenas os casos com melhoria real.
+  - 🖼️ **Visualização completa da instância do grafo** com distinção entre:
+    - Mão única e mão dupla;
+    - Vias obrigatórias e opcionais;
+    - Nós obrigatórios e intermediários.
+  - 🧪 **Geração e salvamento de arquivos finais de solução (`.dat`)** com detalhes das rotas otimizadas, tempo total e custo por rota.
+  - 📂 **Separação clara entre soluções iniciais e finais**, organizadas em pastas específicas (`solucoes-iniciais/` e `solucoes-finais/`), facilitando testes, versões e análises posteriores.
+
+  Essas melhorias reforçam a aplicabilidade do projeto para problemas reais de roteamento, oferecendo não apenas uma solução viável, mas também comparações práticas e visuais para avaliar sua eficiência.
+
+  ---
+
   ## 🧾 Licença
 
   Este projeto é de uso acadêmico e livre para estudo. Contribuições e adaptações são bem-vindas, desde que referenciem o autor.
 
   ---
 
+  ## 🙏 Créditos e Referências
 
-  ## 👤 Autores
+  Este projeto foi desenvolvido de forma autoral, mas contou com **consultas e inspirações adicionais** para aprimorar sua execução e fundamentação teórica. Agradecimentos especiais a:
+
+  - 📚 O site oficial do [DIMACS CARP Challenge](http://dimacs.rutgers.edu/programs/challenge/vrp/carp/), que serviu como base para compreender melhor a formulação do problema e os formatos de instância utilizados.
+  - 📄 O artigo "[A Path Scanning Based Approach to the Capacitated Arc Routing Problem](https://ieeexplore.ieee.org/document/9946880/)" publicado na IEEE, que contribuiu com insights sobre estratégias heurísticas para construção e refinamento de rotas.
+  - 🤖 Algumas partes foram geradas ou aprimoradas com o auxílio de **Inteligência Artificial (IA)**, especialmente com o uso da ferramenta **Gemini Pro**, para apoio na escrita de trechos de código, estruturação do README e refinamento do algoritmo otimizador.
+
+  Estas referências foram essenciais para enriquecer a qualidade e profundidade da solução proposta, respeitando os princípios de aprendizado, pesquisa e boas práticas de desenvolvimento.
+
+  ---
+
+  ## 👤 Autor
 
   - Leonardo Gonçalves
-  - Matheus Coelho
 
+  ---
+  
   ## 📁 Repositório
 
   Acesse o projeto completo em: [https://github.com/liugoncalves/tp-grafos-ufla](https://github.com/liugoncalves/tp-grafos-ufla)
